@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Builder</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="form-section">
+            <h1>Resume Builder</h1>
+            <form id="resume-form">
+                <h2>Personal Information</h2>
+                <label for="profile-pic">Profile Picture</label>
+                <input type="file" id="profile-pic" accept="image/*">
+                <input type="text" id="name" placeholder="Full Name" required>
+                <input type="text" id="title" placeholder="Your Title (e.g., Web Developer)">
+                <input type="email" id="email" placeholder="Email Address">
+                <input type="tel" id="phone" placeholder="Phone Number">
+                <input type="text" id="linkedin" placeholder="LinkedIn Profile URL">
+                <textarea id="summary" placeholder="Professional Summary"></textarea>
+
+                <h2>Work Experience</h2>
+                <div id="experience-fields">
+                    <!-- Experience fields will be added here dynamically -->
+                </div>
+                <button type="button" id="add-experience">Add Experience</button>
+
+                <h2>Skills</h2>
+                <input type="text" id="skills" placeholder="Enter skills, comma-separated">
+
+                <h2>Frameworks</h2>
+                <input type="text" id="frameworks" placeholder="Enter frameworks, comma-separated">
+
+                <h2>Languages</h2>
+                <input type="text" id="languages" placeholder="Enter languages, comma-separated">
+
+                <h2>Education</h2>
+                <div id="education-fields">
+                    <h3>School</h3>
+                    <input type="text" id="school-name" placeholder="School Name">
+                    <input type="text" id="school-grade" placeholder="Grade">
+                    <input type="text" id="school-percentage" placeholder="Percentage">
+                    <h3>College (Optional)</h3>
+                    <div class="college-checkbox-container">
+                        <label for="add-college-checkbox">Add College Details</label>
+                        <input type="checkbox" id="add-college-checkbox">
+                    </div>
+                    <div id="college-details" style="display: none;">
+                        <input type="text" id="college-name" placeholder="College Name">
+                        <input type="text" id="college-degree" placeholder="Degree">
+                        <input type="text" id="college-stream" placeholder="Stream (e.g., CSE, EEE)">
+                        <input type="text" id="college-percentage" placeholder="Percentage">
+                    </div>
+                </div>
+
+                <button type="button" id="download-pdf">Download as PDF</button>
+            </form>
+        </div>
+        <div class="preview-section">
+            <h2>Preview</h2>
+            <div id="resume-preview" class="resume-preview">
+                <!-- Resume preview will be displayed here -->
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

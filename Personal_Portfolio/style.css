@@ -1,0 +1,302 @@
+:root {
+    --bg-color: #fff;
+    --sidebar-bg: #23395d;
+    --primary-color: #fff;
+    --secondary-color: #e0e0e0;
+    --text-color: #222;
+    --accent-color: #23395d;
+    --accent-hover-color: #1a2a40;
+    --sidebar-text: #fff;
+    --divider-color: #23395d;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.container {
+    display: flex;
+    gap: 2rem;
+    padding: 2rem;
+    align-items: flex-start;
+}
+
+.form-section {
+    flex: 1;
+}
+
+.preview-section {
+    flex: 1.5;
+    position: sticky;
+    top: 2rem;
+}
+
+#resume-form {
+    background: var(--primary-color);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+#resume-form h1, #resume-form h2 {
+    text-align: left;
+}
+
+#resume-form label {
+    display: block;
+    margin-top: 1rem;
+    margin-bottom: 0.3rem;
+    font-weight: bold;
+}
+
+#resume-form input,
+#resume-form textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 4px;
+    border: 1px solid var(--secondary-color);
+    background: var(--bg-color);
+    color: var(--text-color);
+    margin-bottom: 1rem;
+}
+
+#resume-form button {
+    background: var(--accent-color);
+    color: #fff;
+    border: none;
+    padding: 0.7rem 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+    transition: background 0.3s ease;
+}
+
+#resume-form button:hover {
+    background: var(--accent-hover-color);
+}
+
+.resume-preview {
+    display: flex;
+    width: 100%;
+    min-height: 600px;
+    background: var(--bg-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    padding: 0;
+    overflow: hidden;
+}
+
+.resume-preview .sidebar {
+    background: var(--sidebar-bg);
+    color: var(--sidebar-text);
+    width: 320px;
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+.resume-preview .main {
+    background: var(--primary-color);
+    flex: 1;
+    padding: 2rem 2.5rem;
+    color: var(--text-color);
+}
+.resume-preview .profile-pic {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center 20%;
+    border: 4px solid var(--accent-color);
+    margin-bottom: 1.5rem;
+}
+.resume-preview .sidebar-section {
+    width: 100%;
+    margin-bottom: 1.5rem;
+}
+.resume-preview .sidebar-section h3 {
+    color: var(--sidebar-text);
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 0.7rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+.resume-preview .sidebar-section ul,
+.resume-preview .sidebar-section li {
+    color: var(--sidebar-text);
+    font-size: 0.98rem;
+    margin-bottom: 0.3rem;
+}
+.resume-preview .sidebar-section .contact-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.resume-preview .sidebar-section .contact-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+.resume-preview .sidebar-section .contact-list i {
+    font-size: 1rem;
+}
+.resume-preview .sidebar-section .skills-list,
+.resume-preview .sidebar-section .frameworks-list,
+.resume-preview .sidebar-section .languages-list {
+    list-style: disc;
+    padding-left: 1.5rem;
+}
+.resume-preview .sidebar-section .skills-list li,
+.resume-preview .sidebar-section .frameworks-list li,
+.resume-preview .sidebar-section .languages-list li {
+    margin-bottom: 0.5rem;
+}
+.resume-preview .education-item {
+    margin-bottom: 1rem;
+}
+.resume-preview .education-item h3 {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 0.2rem;
+}
+.resume-preview .education-item p {
+    font-size: 0.8rem;
+}
+.resume-preview .main .header {
+    text-align: left;
+    margin-bottom: 2rem;
+}
+.resume-preview .main h1 {
+    font-size: 2.2rem;
+    color: var(--accent-color);
+    font-weight: bold;
+    margin-bottom: 0.2rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+.resume-preview .main .title {
+    font-size: 1.1rem;
+    color: var(--accent-color);
+    font-weight: 500;
+    margin-bottom: 1.2rem;
+    text-transform: uppercase;
+}
+.resume-preview .main .section {
+    margin-bottom: 2rem;
+}
+.resume-preview .main h2 {
+    font-size: 1.1rem;
+    color: var(--accent-color);
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 0.7rem;
+    border-bottom: 2px solid var(--divider-color);
+    padding-bottom: 0.3rem;
+}
+.resume-preview .main .profile-text {
+    font-size: 1rem;
+    color: #222;
+    margin-bottom: 1.2rem;
+    line-height: 1.7;
+}
+.resume-preview .main .work-experience {
+    position: relative;
+    padding-left: 2rem;
+}
+.resume-preview .main .work-experience::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.5rem;
+    bottom: 0;
+    width: 2px;
+    background: var(--divider-color);
+}
+.resume-preview .main .experience-item {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+.resume-preview .main .experience-item::before {
+    content: '';
+    position: absolute;
+    left: -2.35rem;
+    top: 0.5rem;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--accent-color);
+}
+.resume-preview .main .experience-item h3 {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 0.2rem;
+    color: #222;
+}
+.resume-preview .main .experience-meta {
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: 0.3rem;
+}
+.resume-preview .main .experience-details {
+    margin-left: 1.2rem;
+    font-size: 0.98rem;
+    color: #222;
+    list-style: disc;
+    margin-bottom: 0.5rem;
+}
+.resume-preview .main .experience-details li {
+    margin-bottom: 0.2rem;
+}
+
+.college-checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.template-selection img {
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    display: block;
+    margin-top: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        padding: 1rem;
+    }
+    .preview-section {
+        position: static;
+        flex: 1;
+    }
+    .resume-preview {
+        flex-direction: column;
+    }
+    .resume-preview .sidebar {
+        width: 100%;
+        padding: 1.2rem 0.8rem;
+        align-items: flex-start;
+    }
+    .resume-preview .main {
+        padding: 1.2rem 0.8rem;
+    }
+}
