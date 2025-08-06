@@ -38,23 +38,25 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         const schoolName = document.getElementById('school-name').value;
+        const schoolYear = document.getElementById('school-year').value;
         const schoolGrade = document.getElementById('school-grade').value;
         const schoolPercentage = document.getElementById('school-percentage').value;
         let educationHTML = `
             <div class="education-item">
-                <h3>${schoolName}</h3>
+                <h3>${schoolName} ${schoolYear ? `(${schoolYear})` : ''}</h3>
                 <p>Grade: ${schoolGrade} | Percentage: ${schoolPercentage}</p>
             </div>
         `;
 
         if (addCollegeCheckbox.checked) {
             const collegeName = document.getElementById('college-name').value;
+            const collegeYear = document.getElementById('college-year').value;
             const collegeDegree = document.getElementById('college-degree').value;
             const collegeStream = document.getElementById('college-stream').value;
             const collegePercentage = document.getElementById('college-percentage').value;
             educationHTML += `
                 <div class="education-item">
-                    <h3>${collegeName}</h3>
+                    <h3>${collegeName} ${collegeYear ? `(${collegeYear})` : ''}</h3>
                     <p>${collegeDegree} in ${collegeStream} | Percentage: ${collegePercentage}</p>
                 </div>
             `;
@@ -182,25 +184,43 @@ document.addEventListener('DOMContentLoaded', () => {
     downloadPdfBtn.addEventListener('click', () => {
         const name = document.getElementById('name').value.trim().replace(/ /g, '_');
         const filename = name ? `${name}.pdf` : 'resume.pdf';
-        const element = document.getElementById('resume-preview');
 
-        // Temporarily resize the element to A4 dimensions for PDF generation
-        element.style.width = '210mm';
-        element.style.height = '297mm';
+        const printElement = document.createElement('div');
+        printElement.className = 'resume-preview print-mode';
+        printElement.innerHTML = preview.innerHTML;
+        document.body.appendChild(printElement);
 
-        const opt = {
-            margin:       0,
-            filename:     filename,
-            image:        { type: 'jpeg', quality: 0.98 },
-            html2canvas:  { scale: 2 },
-            jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+        const img = new Image();
+        img.crossOrigin = "anonymous";
+        img.onload = () => {
+            const opt = {
+                margin: 0,
+                filename: filename,
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2, useCORS: true },
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
+
+            html2pdf().set(opt).from(printElement).save().then(() => {
+                document.body.removeChild(printElement);
+            });
         };
 
-        html2pdf().set(opt).from(element).save().then(() => {
-            // Restore original styles
-            element.style.width = '';
-            element.style.height = '';
-        });
+        img.onerror = () => {
+            const opt = {
+                margin: 0,
+                filename: filename,
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
+
+            html2pdf().set(opt).from(printElement).save().then(() => {
+                document.body.removeChild(printElement);
+            });
+        };
+
+        img.src = profilePicUrl;
     });
 
     // Initial preview update
